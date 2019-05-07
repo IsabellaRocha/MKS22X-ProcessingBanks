@@ -54,6 +54,7 @@ class Visualizer {
         int xNew = (400 / values.length) * idx;
         rect(xNew + x, 120, 400 / values.length, h);
       }
+    }
       //Width of the visualizer is 400!
     }
     void update() {
@@ -61,7 +62,7 @@ class Visualizer {
       for (int i = 0; i < values.length; i++) {
         values[i] += speeds[i]; //the speed updates the values. Do not touch this.
         //??? keep them values between max/min value so they stay in the box.
-
+        if (values[i] <= MIN_VALUE || values[i] >= MAX_VALUE) speeds[i] *= -1;
         //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
       }
     }
