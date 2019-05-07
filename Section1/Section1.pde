@@ -43,18 +43,17 @@ class Visualizer {
     for (int idx = 0; idx < values.length; idx++) {
       float h = values[idx];
       if (h < 0) {
-        if (h < -50 && v > MIN_VALUE) fill(255, 0, 0);
-        if (h >=-50 && val < 0) fill(255, 165, 0);
+        if (h < -50 && h > MIN_VALUE) fill(255, 0, 0);
+        if (h >=-50 && h < 0) fill(255, 165, 0);
         int xNew = (400 / values.length) * idx;
-        rect(xNew + x, 120, 400 / values.length, h * -1);
+        rect(xNew + x, 120, 400 / values.length, h);
       }
-
-      fill(255, 0, 0);
-      rect(x+40, y+100, 60, 50);
-      fill(0, 255, 0);
-      rect(x+120, y+50, 60, 50);
-
-
+      else {
+        if (h >= 0 && h < 50) fill(255, 255, 0);
+        if (h >=50 && h <= MAX_VALUE) fill(0, 255, 0);
+        int xNew = (400 / values.length) * idx;
+        rect(xNew + x, 120, 400 / values.length, h);
+      }
       //Width of the visualizer is 400!
     }
     void update() {
