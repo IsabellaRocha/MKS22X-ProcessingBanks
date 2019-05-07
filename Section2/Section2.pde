@@ -16,8 +16,8 @@ void setup() {
  */
 void gasket(int levels, float v1x, float v1y, float v2x, float v2y, float v3x, float v3y) {
   fill(0);
-  triangle(v1x, v1y, v2x, v2y, v3x, v3y);
-  if (levels > 1) {
+  if (levels == 0) triangle(v1x, v1y, v2x, v2y, v3x, v3y);
+  else {
     fill(255);
     float x1 = (v1x + v3x) / 2;
     float y1 = (v1y + v3y) / 2;
@@ -25,7 +25,7 @@ void gasket(int levels, float v1x, float v1y, float v2x, float v2y, float v3x, f
     float y2 = (v2y + v3y) / 2;
     float x3 = (v1x + v2x) / 2;
     float y3 = (v1y + v2y) / 2;
-    triangle(x1, y1, x2, y2, x3, y3);
+  //  triangle(x1, y1, x2, y2, x3, y3);
     gasket(levels - 1, v2x, v2y, x2, y2, x3, y3);
     gasket(levels - 1, x1, y1, v1x, v1y, x3, y3);
     gasket(levels - 1, x1, y1, x2, y2, v3x, v3y);
